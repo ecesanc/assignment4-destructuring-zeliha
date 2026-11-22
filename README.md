@@ -295,3 +295,11 @@ The project was checked with:
 npm install
 npm run check
 npm run all
+
+## Final verification
+
+The repository was checked after the final upload.
+
+The project contains the JavaScript and TypeScript examples, the field guide, the real output file, and the LaTeX bonus files.
+
+The `node_modules/` directory is excluded from the submission.
