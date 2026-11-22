@@ -283,3 +283,15 @@ The following is the run log I made while developing this version. Rewrite these
 - [ ] Run `npm install`, `npm run check`, and `npm run all > output.txt` one last time.
 - [ ] Inspect `output.txt` and ensure the README outputs match the run.
 - [ ] Include `README.md`, `output.txt`, `js/`, `ts/`, `package.json`, `package-lock.json`, `tsconfig.json`, and the claimed bonus files; exclude `node_modules/`.
+## Repository verification
+
+This project was uploaded to GitHub at:
+
+https://github.com/ecesanc/assignment4-destructuring-zeliha
+
+The project was checked with:
+
+```bash
+npm install
+npm run check
+npm run all
