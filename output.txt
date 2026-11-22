@@ -1,0 +1,69 @@
+
+> destructuring-guide@0.0.0 all
+> npm run js && npm run ts
+
+
+> destructuring-guide@0.0.0 js
+> node js/arrays.mjs && node js/objects.mjs && node js/params.mjs && node js/pitfalls.mjs && tsx js/props.jsx
+
+form 1: 3 27
+form 2: Midnight City [ 'Afterglow', 'Northern Lights', 'Finale' ]
+form 3: 8 3
+form 4: study general
+form 5: Plan study session todo
+form 6: The Left Hand of Darkness
+form 7: comfortable
+form 8: t7 { title: 'Submit report', priority: 'high' }
+form 9: Mina urgent
+form 10: priority high
+form 11: { title: 'Read', status: 'todo' }
+form 11b: page=42
+form 12 object: Ada 91
+form 12 object: Bora 87
+form 12 map: first email
+form 12 map: second backup
+pitfall 1: TypeError
+pitfall 2: fallback null
+pitfall 3: new
+pitfall 4: true
+pitfall 5: second second
+P1: <section><h2>Hi</h2>text</section> <section><h2>Hi</h2>text</section>
+P2: <section><h2>Same</h2>text</section> <section><h2>Same</h2>text</section>
+P3: <div>word</div> <div>7</div> <div><em>one</em></div> <div><b>A</b><i>B</i></div> <div></div> <div></div> <div></div> function
+P4: <section id="panel-1" data-kind="demo"><h2>Attrs</h2>Body</section> <section class="explicit"><h2>Wins</h2>Body</section>
+P5: <article><header>H</header><main>Content</main><footer>F</footer></article> <article><header></header><main><header>H</header><p>Content</p><footer>F</footer></main><footer></footer></article>
+P6: <span>default</span> <span>default</span> <span></span>
+P7: JavaScript has no compile-time prop rejection; TypeScript checks the equivalent declarations.
+
+> destructuring-guide@0.0.0 ts
+> tsx ts/arrays.ts && tsx ts/objects.ts && tsx ts/params.ts && tsx ts/types.ts && tsx ts/props.tsx
+
+form 1: 3 27
+form 2: Midnight City [ 'Afterglow', 'Finale' ]
+form 3: 8 3
+form 4: study general
+form 5: Plan study session todo
+form 6: The Left Hand of Darkness
+form 7: comfortable
+form 8: t7 { title: 'Submit report', priority: 'high' }
+form 9: Mina urgent
+form 10: priority high
+form 11: { title: 'Read', status: 'todo' }
+form 11b: page=42
+form 12 object: Ada 91
+form 12 object: Bora 87
+form 12 map: first email
+form 12 map: second backup
+T1: 1
+T2: 3 chapters ready 2026
+T3: no item
+T4: missing guest
+T5: Notes 12 Notes
+P1: <section><h2>Hi</h2>text</section> <section><h2>Hi</h2>text</section>
+P2: <section><h2>Same</h2>text</section> <section><h2>Same</h2>text</section>
+P3: <div>word</div> <div>7</div> <div><em>one</em></div> <div><b>A</b><i>B</i></div> <div></div> <div></div>
+P4: <section id="panel-1"><h2>Attrs</h2>Body</section>
+P5: <article><header>H</header><main>Content</main><footer>F</footer></article> <article><header><header>H</header></header><main><p>Content</p></main><footer><footer>F</footer></footer></article>
+P6: <span>default</span> <span>default</span> <span></span>
+P7: <button type="button" disabled="">Save</button> ReactNode accepts strings, numbers and elements; ComponentProps accepts native button attributes.
+P7-check: [Function: ActionButton]

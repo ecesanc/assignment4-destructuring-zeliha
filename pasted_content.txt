@@ -1,0 +1,223 @@
+Assignment 4:
+Destructuring Field Guide
+Write a careful, documented guide to destructuring in JavaScript and TypeScript: const [x, y] = f(), let { a, b } = t and everything around them, ending with how React components take apart props and children. This is a documentation assignment. The code is small. What we grade is that you understood it and can explain it. It is worth 100 points, and four optional parts are bonuses of 5 points or more each.
+
+Format: Individual assignment.
+Language: JavaScript and TypeScript (strict). The guide itself is Markdown. LaTeX is a bonus.
+Source: The starter project in starter/ and the destructuring parts of the slides and of the Task Manager sample.
+Deadline: Set in Moodle (the course platform) when the assignment is posted.
+Points: 100 for the assignment and 5 or more for each of the four bonuses: 120 or more in total.
+Abbreviations and Key Terms
+AI: Artificial Intelligence, as in AI coding assistants.
+children: A special prop. Whatever you write between the opening and closing tags of a component, <Card>this</Card>, arrives in the component as props.children.
+default value: A value used when the item is missing (undefined): const { size = 10 } = options.
+destructuring: Taking values out of an array or an object into separate variables with one pattern on the left: const [x, y] = f() or let { a, b } = t.
+JSX: The HTML-like syntax inside JavaScript and TypeScript files that React turns into function calls.
+LaTeX: A typesetting system for documents with a lot of structure and code. The source is plain text and the output is a PDF.
+Moodle: The course platform: you download materials and upload assignments there.
+pattern: The left side of a destructuring: the shape you describe, such as [first, ...rest] or { a, b }.
+props: The single object a React component receives. Its fields are the attributes you write in JSX.
+rest: The ...name in a pattern that collects what is left over into a new array or object.
+spread: The ...value in an expression that expands an array or object into separate items or fields. It looks like rest but does the opposite job.
+TS: TypeScript, JavaScript with static types.
+tuple: A TypeScript array type with a fixed length and a type for each position, such as [number, string].
+The assignment (Required, 100 points)
+You already use destructuring: const [state, dispatch] = useReducer(...) and function TaskRow({ task, onAdvance }) are both destructuring. In this assignment you study the feature on its own, in plain JavaScript first and then in TypeScript, and you write it down so that another student could learn it from your guide. You also separate the two things a React component receives, its props and its children, and explain how they differ.
+
+Part	You hand in	Points
+The field guide	a zip of the project: your examples, output.txt and a README.md that documents everything	100
+Bonus 1: LaTeX	the guide written in LaTeX, with the PDF	5+
+Bonus 2: depth	extra forms, edge cases and experiments, each explained	5+
+Bonus 3: real code	destructuring found in real projects, analysed	5+
+Bonus 4: Git repository	a repository link in README.md	5+
+Total with all four bonuses	everything above	120+
+Every optional part is a bonus. A bonus is worth 5 points, and more when your work goes deeper than the minimum. The instructor decides the exact number from the depth of what you wrote, how correct it is, and how well it shows that you understood the topic. Bonus points are added to the score of this assignment.
+
+What we want to see
+The goal of this assignment is to find out whether you understood the topic. That is why the examples and the writing are the assignment, not the amount of code.
+
+Your own examples. Use your own data and your own names (books, songs, a Task Manager of your choice). Examples copied from MDN, from a tutorial or from an AI answer, with only the names changed, are easy to recognise.
+Real output. Every output in your guide is copied from a real run on your machine. Show what really happened, including the surprises.
+Your own log. A section of README.md lists the errors you really got, your wrong guesses, and what you changed your mind about, in your own words.
+No credit for output with no effort behind it. A guide that reads like unedited AI output, with no sign of your own work (generic examples, no log, no real errors, explanations you cannot give again in your own words), earns no points. The instructor may ask you to explain any entry in person, and the score follows that explanation.
+Where to start
+The starter is a small npm project in the starter/ folder that comes with this handout (and as starter.zip). Open a terminal in the folder and run these commands. You need Node.js 20.19 or newer.
+
+Terminal
+
+npm install
+npm run all      # runs the JavaScript and TypeScript examples
+npm run check    # type-checks everything in strict mode
+The starter has five JavaScript files, five TypeScript files, a tsconfig.json with strict and noUncheckedIndexedAccess on, and a README.md with the sections you fill in. One worked example sits in each file; the rest are marked TODO. Work inside this project.
+
+Files
+
+js/
+  arrays.mjs      forms 1 to 4
+  objects.mjs     forms 5 to 10
+  params.mjs      forms 11 and 12
+  pitfalls.mjs    five pitfalls
+  props.jsx       props and children (P1 to P7), JavaScript
+ts/
+  arrays.ts  objects.ts  params.ts   the same forms, typed
+  types.ts        topics T1 to T5
+  props.tsx       props and children (P1 to P7), TypeScript
+README.md         the field guide (this is the main document)
+Requirements
+Your solution meets all seven requirements.
+
+R1. The project runs. It is made from the starter, npm run all runs without errors, and npm run check passes in strict mode. No any, and no @ts-ignore. The one allowed suppression is // @ts-expect-error in topic T5.
+R2. JavaScript examples. In js/, each of the twelve forms is shown at least once with console.log, and the five pitfalls are shown (the starter lists them). Use your own data.
+R3. TypeScript examples. In ts/, the same twelve forms are written with types, and the five topics T1 to T5 are shown.
+R4. The field guide. README.md has one entry for each of the twelve forms, in the template below: syntax, example, real output, use it when, watch out. It also has a pitfalls section with at least five pitfalls, each shown with real output, and each explained in a sentence that says why it happens.
+R5. Props and children. README.md has a section for P1 to P7, backed by runnable code in js/props.jsx and ts/props.tsx. This is the deepest part of the assignment and it carries the most points.
+R6. JavaScript versus TypeScript. A table in README.md with at least eight rows: for a form, what stays the same in TypeScript, what you must add (an annotation, a type), and what error you get when you get it wrong.
+R7. Output and your log. output.txt in the project is the real output of npm run all (npm run all > output.txt). README.md ends with a section titled My own log: at least five real things that went wrong or surprised you, with the exact error message where there was one, and what you learned from it.
+Requirement	What is graded	Points
+R1	project runs and type-checks	5
+R2	JavaScript examples, forms 1 to 12 and pitfalls	10
+R3	TypeScript examples, forms 1 to 12 and topics T1 to T5	15
+R4	the field guide entries and the pitfalls section	30
+R5	props and children, in depth	25
+R6	the JavaScript versus TypeScript table	5
+R7	output file and your own log	10
+Total		100
+The twelve forms
+Each form gets code in JavaScript, the same code in TypeScript, and an entry in the field guide.
+
+Form	Pattern	Group
+1	const [x, y] = f(): values by position, for example a tuple returned by a function	arrays
+2	const [, second, ...others] = list: skip an item and collect the rest	arrays
+3	[a, b] = [b, a]: swap two variables	arrays
+4	const [a = 1, b = 2] = []: default values	arrays
+5	let { a, b } = t: properties by name	objects
+6	const { a: alpha } = t: rename while you take it	objects
+7	const { a = 1 } = t: default values	objects
+8	const { a, ...others } = t: rest in an object	objects
+9	const { p: { x }, list: [first] } = t: nested patterns, and arrays inside objects	objects
+10	const { [key]: value } = t: a computed key	objects
+11	function f({ a = 1, b }: Options = {}): patterns in parameters, with defaults	where
+12	for (const [k, v] of Object.entries(o)) and Map entries: patterns in loops	where
+Hints. Try each form with a value that is missing, with undefined and with null. Ask yourself what the pattern would look like as plain assignments, one line per variable, and write that down: it is the best way to explain what the pattern does. Rest in a pattern (...others) and spread in an expression ([...list]) use the same three dots for opposite jobs; say so in your guide.
+TypeScript topics
+The types add a second layer to every form. These five are where students most often get stuck. Show each one in ts/types.ts and explain it in the guide.
+
+Topic	What you show
+T1	In a pattern, { a: string } is a rename, not a type. Show the confusion and the correct way to write the type after the pattern.
+T2	A tuple return type, [number, string], and what as const does to an array that you destructure.
+T3	noUncheckedIndexedAccess: what const [first] = items has as its type, and how you deal with undefined.
+T4	Defaults and optional fields: how the type of a destructured variable changes when the field is optional and when it has a default.
+T5	One compile error that destructuring causes (use // @ts-expect-error on that one line), with the message and the fix.
+Props and children
+This is the main part of the assignment. A React component receives one object, its props. The object has the attributes you wrote in JSX, and it also has the content you put between the tags, under the name children. Destructuring is how almost every component takes this object apart, so this is where the forms from this assignment meet your real code. Your job is to separate the two ideas, props and children, and to show that you understand the difference, not only the syntax.
+
+Show every topic in code that runs (render it with renderToStaticMarkup, as the starter does, and paste the real output into your guide) and explain it in your own words.
+
+Topic	What you show
+P1	Props is one object. function Card(props) and function Card({ title, children }) do the same thing. Show both, and say what the second one is in terms of forms 5 and 11.
+P2	children is only a prop. <Card>text</Card> and <Card children="text" /> give the same result. Show it with the rendered output.
+P3	What children can be. A string, a number, one element, several elements, undefined, null, false, a function. Render each one and write what appears, and what does not.
+P4	Separating children from the other props. ({ title, children, ...rest }), and rest spread onto a DOM element, <section {...rest}>. Show how the order of the spread and an explicit prop decides which one wins.
+P5	Props or children? The same component built twice: once with a header and a footer prop, once with children only. Say when you would choose each one and why.
+P6	Defaults. A default for a prop with form 7. Show that undefined triggers the default and null does not, and what that does on the screen.
+P7	Types. children?: ReactNode, PropsWithChildren and ComponentProps<'button'>. Show what each one allows and what the compiler rejects.
+A starting point (the starter has this)
+
+function CardA(props) {
+  return <section><h2>{props.title}</h2>{props.children}</section>
+}
+function CardB({ title, children }) {
+  return <section><h2>{title}</h2>{children}</section>
+}
+Hints. Do not stop at what works. Try what does not: a prop called children and tags with content at the same time, a missing children, key as a prop name (read what React says about it), rest props with a name that already exists, and a component that changes props. Each failed attempt is a good entry for your own log.
+How an entry looks
+Every one of the twelve entries has the same five parts. This is one entry as an example; do not copy it, write your own with your own data.
+
+README.md
+
+### Form 6: rename while you take it, `const { title: heading } = task`
+
+**Syntax:** `const { title: heading } = task`
+
+**Example** (from `js/objects.mjs`, my own data):
+
+```js
+const book = { title: 'Dune', year: 1965 }
+const { title: name } = book
+console.log(name)
+```
+
+**Output:** `Dune`
+
+**Use it when:** the property name clashes with a variable you already have,
+or the name is not clear in this place.
+
+**Watch out:** the old name is NOT a variable after this. `title` does not exist here,
+only `name` does. (Reading it as "title becomes name" is what makes it easy to remember:
+the source is on the left of the colon and the new name is on the right.)
+Bonus 1: LaTeX (5+ points)
+Write the field guide as a LaTeX document and hand in the .tex source and the PDF. A guide with code listings, tables and a short contents page is a good fit for LaTeX.
+
+The PDF compiles from your source with no errors, and you say in README.md which commands you used.
+Code is typeset with a listings or minted package, tables are real tables, and a contents page links to the sections.
+The content is the guide itself (the entries, the pitfalls, props and children, the table), not a shorter copy.
+More points for care: no overfull boxes, consistent code style, and a layout that makes the guide pleasant to read.
+Start your answer with the line Bonus 1: LaTeX in README.md.
+
+Bonus 2: Depth (5+ points)
+This bonus is graded by how deep you go. Pick directions that you find interesting and investigate them properly: run experiments, read the specification or the TypeScript handbook, and report what you found. Each direction needs your own code, real output and an explanation of why it behaves like that.
+
+Destructuring other things than arrays and objects: strings, Set, Map, generators and other iterables. What does an array pattern really call on the value?
+The order of evaluation: when a default is computed, whether a default can use an earlier variable of the same pattern, and what happens when the default is a function call that has a side effect.
+Destructuring in other places: catch ({ message }), import and export, for...in against for...of, and assignment targets such as [obj.a, obj.b] = [1, 2].
+TypeScript at the type level: pull types apart in the same spirit, with infer in tuple and object types (for example First<T>, Rest<T>), Parameters<F> and generic components in React.
+Performance and readability: when destructuring makes code worse (deep patterns, long lists of renames), with an example and a refactoring.
+Start the section with the line Bonus 2: Depth. A short section that lists features gets few points; a section where you tried things, were surprised, and explain why earns the most.
+
+Bonus 3: Real code (5+ points)
+Look for destructuring in code that somebody else wrote and analyse it. Use the Task Manager starter from Assignment 3, a library you have installed (for example a file inside node_modules), and an open-source project of your choice.
+
+At least five real cases, with the file and the line. For each one: which of your twelve forms it is, and what the same code looks like without destructuring.
+At least one case where you think the destructuring makes the code worse, and why.
+At least one case with React props, with a statement of what is a prop and what is children there.
+Start the section with the line Bonus 3: Real code.
+
+Bonus 4: Git repository (5+ points)
+Keep your project in a Git repository on GitHub or GitLab and give the instructor access as announced in Moodle. Put the link in README.md.
+
+The repository has a .gitignore that leaves out node_modules, and it runs after git clone, npm install and npm run all.
+The history shows your work in steps and over several days: at least five commits with messages that say what changed. One commit with everything in it earns little, and it makes it hard to see that the work is yours.
+Start your answer with the line Bonus 4: Git repository, followed by the link.
+
+Submit your work
+Put your project in one folder named assignment4, zip it, and upload the zip to the Assignment 4 entry on Moodle before the deadline shown there. Leave out node_modules. The zip holds your code, output.txt, README.md and, for Bonus 1, the LaTeX source and the PDF. A repository is not required: it is Bonus 4. Write your full name and student number at the top of README.md and in a comment at the top of each source file. The project must run after npm install and npm run all.
+
+Checklist
+Check each item before you upload.
+
+[ ] The project is made from the starter, and npm run all and npm run check both pass (R1).
+[ ] js/ shows forms 1 to 12 and five pitfalls, and everything runs (R2).
+[ ] ts/ shows forms 1 to 12 and the topics T1 to T5, with no any (R3).
+[ ] README.md has an entry for each of the 12 forms in the template: syntax, example, output, use it when, watch out (R4).
+[ ] README.md has a pitfalls section with at least five pitfalls, each shown with real output (R4).
+[ ] README.md has the props and children section with P1 to P7 (R5).
+[ ] README.md has the JavaScript versus TypeScript table (R6).
+[ ] output.txt is the real output of npm run all, and README.md has your own log with your real errors (R7).
+[ ] Your name and student number are at the top of README.md and of every source file.
+[ ] Bonus 1: the LaTeX source and the PDF are in the zip, and README.md says so.
+[ ] Bonus 2: the extra depth is in a section titled Bonus 2: Depth.
+[ ] Bonus 3: README.md has the real-code section with at least five cases.
+[ ] Bonus 4: the repository link is in README.md, and the history has at least five commits.
+[ ] Everything is in one assignment4 folder, without node_modules, zipped and uploaded to Moodle.
+Rules that apply
+Late work. Up to 3-4 hours after the deadline is accepted without penalty. After that, 25% is deducted for each day, and late work is accepted until the end of the third day after the deadline. Work submitted later is graded out of 0.
+AI tools. AI coding assistants are allowed. You must be able to explain and defend every line of code and every sentence you submit. Because this assignment is about understanding, work in which your own effort cannot be seen earns no points, and presenting work you cannot explain as your own is academic dishonesty.
+Claiming a bonus. Say which bonuses you did in your own README.md. Give each bonus a heading or a first line with its number and name, for example Bonus 1: LaTeX. A bonus you do not claim is not graded.
+Troubleshooting
+What you see	Why, and what to do
+TypeError: Cannot destructure property 'a' of 'undefined'	The value on the right is undefined or null. Give the parameter a default (= {}) or check the value first.
+SyntaxError on { a } = obj	A line that starts with { is read as a block. Write ({ a } = obj) with parentheses, or use const.
+A variable is undefined although the field exists	You may have renamed it: in { a: b } the variable is b, and a does not exist.
+ReferenceError: React is not defined	The JSX setting is missing. Keep jsx: "react-jsx" in tsconfig.json and run the file with npx tsx.
+Object is possibly 'undefined' after const [first] = items	noUncheckedIndexedAccess is on, so an array item may be missing. Check it, or give it a default.
+Property 'children' does not exist on type	Your props type does not list children. Add children?: ReactNode or use PropsWithChildren.

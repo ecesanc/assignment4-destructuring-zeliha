@@ -1,0 +1,48 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{hyperref}
+\geometry{margin=2.5cm}
+\definecolor{codegray}{gray}{0.95}
+\lstset{basicstyle=\ttfamily\small,backgroundcolor=\color{codegray},frame=single,breaklines=true}
+\title{Destructuring Field Guide}
+\author{Zeliha Ece Sancaklı\\Student number: 2024502135}
+\date{Fall 2026}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Introduction}
+Destructuring takes values from arrays and objects into variables. This document is the LaTeX companion to the runnable JavaScript and TypeScript project.
+\section{The twelve forms}
+\subsection{Array forms}
+\begin{longtable}{p{0.18\textwidth}p{0.72\textwidth}}
+Form 1 & \lstinline|const [x, y] = pair| takes values by position.\\
+Form 2 & \lstinline|const [, second, ...others] = list| skips and collects.\\
+Form 3 & \lstinline|[a, b] = [b, a]| swaps existing variables.\\
+Form 4 & \lstinline|const [a = 1] = list| supplies a default for undefined.\\
+\end{longtable}
+\subsection{Object forms}
+\begin{longtable}{p{0.18\textwidth}p{0.72\textwidth}}
+Form 5 & \lstinline|const { a, b } = object| selects named properties.\\
+Form 6 & \lstinline|const { title: heading } = book| renames a property locally.\\
+Form 7 & \lstinline|const { density = 'comfortable' } = settings| defaults an undefined property.\\
+Form 8 & \lstinline|const { id, ...rest } = task| collects remaining properties.\\
+Form 9 & \lstinline|const { owner: { name } } = profile| uses a nested pattern.\\
+Form 10 & \lstinline|const { [key]: value } = record| uses a computed key.\\
+\end{longtable}
+\subsection{Where patterns occur}
+Form 11 uses an object or array pattern in a function parameter, such as \lstinline|function f({ title } = {})|. Form 12 uses pair patterns in loops, such as \lstinline|for (const [key, value] of Object.entries(o))|.
+\section{Pitfalls}
+A missing whole value such as \lstinline|undefined| or \lstinline|null| causes a TypeError. Defaults apply to \lstinline|undefined|, not \lstinline|null|. Assignment patterns beginning with braces need parentheses. Destructuring is shallow, so nested objects remain shared references. Array positions are ordered; object properties are selected by name.
+\section{Props and children}
+React gives a component one props object. \lstinline|function Card(props)| and \lstinline|function Card({ title, children })| read the same object. Content between tags becomes the special \lstinline|children| prop. Strings, numbers and elements render; \lstinline|null|, \lstinline|undefined| and \lstinline|false| render nothing. Rest props can be forwarded to a DOM element, and later JSX attributes win. In TypeScript, \lstinline|ReactNode|, \lstinline|PropsWithChildren| and \lstinline|ComponentProps<'button'>| express these contracts.
+\section{TypeScript}
+A colon inside a destructuring pattern renames; the annotation follows the complete pattern. Tuples such as \lstinline|[number, string]| preserve positions, while \lstinline|as const| creates a readonly tuple. With \lstinline|noUncheckedIndexedAccess| an extracted array item may be undefined. Defaults narrow optional fields. The runnable project contains one expected compile error with its correction.
+\section{Output and reflection}
+The exact run is saved in \texttt{output.txt}. Before submission, I will replace the identity placeholders, compare the output with the Markdown guide, and add my own real Git repository cases and commit link.
+\end{document}
